@@ -7,23 +7,47 @@
     <body>
         <button onclick="(function () {                        // Bottone da script
             console.log('click da evento')}) ()">cliccami da evento</button>
-        <button onclick="clickFunction()">                     <!-- Bottone impostato con uno script -->
-            cliccami da script</button>                
+        <button onclick="clickFunction('script')">                     <!-- Bottone impostato con uno script -->
+            cliccami da script</button>      
+        <div id="div1">
+            <p>Non premere per cortesia</p>
+        </div>    
+        
+        <button id="btn3">cliccami da listener</button>
         
 
         <script>
+            /*
             var clickFunction = function(){
-                // operations behind the b
+                // operations behind the button
                 console.log("click da script");
             };
+            */
 
-            var listenClickFunction = function(){
-                console.log("click da evento");
+            var clickFunction = function(stringa){
+                console.log("click da "+stringa);
             };  // TODO unica funzione
 
+            var color = true;
             var button3 = document.getElementById("btn3");
-            button3.addEventListener("click", listenClickFunction());
+            button3.addEventListener("click",
+                function(){                                        // clickFunction() è l'invocazione della funzione
+                    clickFunction('listener');                     // function(){ clickFunction(); }; è la creazione e passaggio di un oggetto, che è la funzione
+                });
+                
+            document.getElementById("div1").setAttribute("style", "color: pink");
+            document.getElementById("div1").innerHTML = 
+                "<h1>TI AVEVO DI NON CLICCARE MONA</h1>";
+
+            if(color) {
+                button3.setAttribute("style", "background-color: red");
+                color = false;
+            } else {
+                button3.removeAttribute("style");
+                button = true;
+            }
             
+            // RICORDARSI CHE LE FUNZIONI SONO OGGETTI
             /*
             clickFunction();
             clickFunction();
