@@ -5,7 +5,29 @@
         </title>
     </head>
     <body>
-        <button onclick="(function () {
-            console.log('click')}) ()">cliccami</button>
+        <button onclick="(function () {                        // Bottone da script
+            console.log('click da evento')}) ()">cliccami da evento</button>
+        <button onclick="clickFunction()">                     <!-- Bottone impostato con uno script -->
+            cliccami da script</button>                
+        
+
+        <script>
+            var clickFunction = function(){
+                // operations behind the b
+                console.log("click da script");
+            };
+
+            var listenClickFunction = function(){
+                console.log("click da evento");
+            };  // TODO unica funzione
+
+            var button3 = document.getElementById("btn3");
+            button3.addEventListener("click", listenClickFunction());
+            
+            /*
+            clickFunction();
+            clickFunction();
+            */
+        </script>
     </body>
 </html>
